@@ -23,11 +23,22 @@ p {
   font-size: 16px;
 }
 
+#material-section {
+  background-color: #fae4c6;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+#model-view {
+  background-color: #fae4c6;
+  padding-top: 40px;
+}
+
 model-viewer {
   width: auto;
   max-width: 1200px;
   height: 700px;
-  background-color: #efefef;
+  background-color: #fbf6f0;
   margin: 0 auto;
 }
 
@@ -66,20 +77,20 @@ model-viewer {
 }
 
 .HotspotAnnotation p {
-  color: #333;
-  font-size: 15px;
-  line-height: 22px;
-  font-weight: 300;
+  color: #2d2823;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
 }
 
 .HotspotAnnotation h2 {
-  color: #333;
+  color: #d56300;
   font-size: 25px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .HotspotAnnotation img {
-  max-width: 250px;
+  width: 80px;
 }
 
 model-viewer::part(default-progress-bar) {

@@ -12,7 +12,7 @@
     <!-- link to greensock main library and scroll plugin -->
   </head>
   <body>
-    <div class="grid-con">
+    <div id="model-view" class="grid-con">
       <div class="col-span-full">
         <model-viewer id="model" src="model/earbuds.gltf" ar ar-modes="webxr scene-viewer quick-look" ios-src="model/earbuds.usdz" camera-controls poster="images/poster.webp" shadow-intensity="1" environment-image="images/aircraft_workshop_01_1k.hdr" exposure="1.7" camera-orbit="52.34deg 88.29deg 874.8m" field-of-view="30deg">
 
@@ -47,12 +47,12 @@
 
     <!-- add code for Materials -->
 
-  <div class="grid-con">
+  <div id="material-section" class="grid-con">
 
        <!-- <div id="materials-con" class="col-span-full"><h2>Materials Container</h2> -->
     <div class="col-span-full"><h2>Innovative Features of Our Earbuds</h2><ul id="materials-con"></ul>
 
-      <template id="materials-template" class="col-span-full">
+      <template id="material-template" class="col-span-full">
        <li class="material">
          <h3 class="material-heading">Material Heading</h3>
          <p class="material-description">Material Description</p>
