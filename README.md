@@ -1,6 +1,7 @@
 # Akbari_Leila_AJAX
 
-This JavaScript application enhances the user experience of exploring a 3D model of earbuds by providing dynamic information through hotspots. The hotspots trigger AJAX calls to fetch details about the earbuds' features and materials.
+This JavaScript application enhances the user experience of exploring a 3D model of earbuds by providing dynamic information through hotspots. The hotspots trigger AJAX calls to fetch details about the earbuds' features and materials. Also the spinner in this project serves as a visual indicator, often used to signify that a process is ongoing, such as data loading or an operation in progress. 
+
 
 ## How to use
 1: Open the HTML file in a web browser.
