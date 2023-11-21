@@ -5,7 +5,7 @@
   const hotspots = document.querySelectorAll(".Hotspot");
 
   //Variables AJAX
-  const infoboxesCon = document.querySelector("#infoboxes-con");
+  const infoboxesCon = document.querySelector("#infoBoxes");
   const materialsCon = document.querySelector("#materials-con");
 
   //This information needs to be removed then pulled with an AJAX Call using the Fetch API
@@ -37,19 +37,19 @@
 
 
   // Spinner
-  const spinner = `<svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-  viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-  <path fill="#333" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
-  <animateTransform
-  attributeName="transform"
-  attributeType="XML"
-  type="rotate"
-  dur="1s"
-  from="0 50 50"
-  to="360 50 50"
-  repeatCount="indefinite" />
-  </path>
-  </svg>`;
+  // const spinner = `<svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  // viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+  // <path fill="#333" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+  // <animateTransform
+  // attributeName="transform"
+  // attributeType="XML"
+  // type="rotate"
+  // dur="1s"
+  // from="0 50 50"
+  // to="360 50 50"
+  // repeatCount="indefinite" />
+  // </path>
+  // </svg>`;
 
     //This information needs to be removed then pulled with an AJAX Call using the Fetch API
     //this is the api url https://swiftpixel.com/earbud/api/materials"
@@ -78,7 +78,7 @@
   // ];
 
 
-  
+  // AJAX Function 1 - Test
 //   function getData() {
 
 //     infoboxesCon.innerHTML = spinner;
@@ -129,14 +129,14 @@
 
 // AJAX Function 1
 function loadInfoBoxes() {
-  infoboxesCon.innerHTML = spinner;
+  // infoboxesCon.innerHTML = spinner;
 
   fetch("https://swiftpixel.com/earbud/api/infoboxes")
     .then(response => response.json())
     .then(infoBoxes => {
       console.log(infoBoxes);
 
-      let ul = document.createElement("ul");
+      // let ul = document.createElement("ul");
 
       // infoboxes.results.forEach(result => {
         infoBoxes.forEach((infoBox, index) => {
@@ -147,20 +147,20 @@ function loadInfoBoxes() {
         // const imageElement = document.createElement("img");
         // imageElement.src = feature.picture.thumbnail;
 
-        const imgElement = document.createElement("img");
+        const imgElement = document.createElement('img');
          // img.src = result.image.thumbnail;
         // img.src = feature.picture.thumbnail;
-        img.src = infoBox.picture.thumbnail;
+        imgElement.src = infoBox.picture.thumbnail;
 
         const titleElement = document.createElement('h2');
         // h2.textContent = result.title;
         // h2.textContent = feature.heading;
-        h2.textContent = infoBox.heading;
+        titleElement.textContent = infoBox.heading;
 
         const textElement = document.createElement('p');
         // p.textContent = result.text;
         // p.textContent = feature.description;
-        p.textContent = infoBox.description;
+        textElement.textContent = infoBox.description;
 
         // li.appendChild(imageElement);
         selected.appendChild(imgElement);
@@ -169,94 +169,49 @@ function loadInfoBoxes() {
         // li.appendChild(textElement);
         selected.appendChild(textElement);
         // ul.appendChild(li);
-      });
+      })
 
-      infoboxesCon.innerHTML = "";
-      infoboxesCon.appendChild(ul);
+      .catch(error => console.error(error));
+
+      // infoboxesCon.innerHTML = "";
+      // infoboxesCon.appendChild(ul);
     })
-    .catch(error => console.error(error));
+    // .catch(error => console.error(error));
   }
 //  getData();
-
-
-// AJAX Function First Version:
-
-//   function loadInfoBoxes() {
-
-//     //make AJAX call here
-//     infoboxesCon.innerHTML = spinner;
-
-//     fetch("https://swiftpixel.com/earbud/api/infoboxes")
-//     .then(response => response.json())
-//     .then(infoboxes => {
-//       console.log(infoboxes);
-
-//       let ul = document.createElement("ul");
-
-//       // infoboxes.results.forEach((infoBox, index) => {
-//       infoboxes.results.forEach(result => {  
-//         let selected = document.querySelector(`#hotspot-${index + 1}`);
-
-//         const li = document.createElement("li");
-
-//         const img = document.createElement("img");
-//         img.src = result.picture.thumbnail;
-
-//         const h2 = document.createElement('h2');
-//         h2.textContent = result.title;
-
-//         const p = document.createElement('p');
-//         p.textContent = result.text;
-
-//         // selected.appendChild(titleElement);
-//         // selected.appendChild(textElement);
-
-//         li.appendChild(img);
-//         li.appendChild(h2);
-//         li.appendChild(p);
-//         ul.appendChild(li);
-//       });
-
-//       infoboxesCon.innerHTML = "";
-//       infoboxesCon.appendChild(ul);
-//     })
-//     .catch(error => console.error(error));
-// }
-//   loadInfoBoxes();
-
-  // getData();
+// loadInfoBoxes();
 
 
   //AJAX function 2
 
-  function loadMaterials() {
+  function loadMaterialList() {
     materialsCon.innerHTML = spinner;
 
     fetch("https://swiftpixel.com/earbud/api/materials")
       .then(response => response.json())
-      .then(materials => {
-        console.log(materials);
+      .then(materialList => {
+        console.log(materialList);
 
-        let ul = document.createElement("ul");
+        // let ul = document.createElement("ul");
 
-        materials.results.forEach(result => {
-          const li = document.createElement("li");
+        materialList.forEach(material => {
+          // const li = document.createElement("li");
 
           const h3 = document.createElement('h3');
-          h3.textContent = result.heading;
+          h3.textContent = material.heading;
 
           const p = document.createElement('p');
-          p.textContent = result.description;
+          p.textContent = material.description;
 
           li.appendChild(h3);
           li.appendChild(p);
-          ul.appendChild(li);
+          // ul.appendChild(li);
         });
 
-        materialsCon.innerHTML = "";
-        materialsCon.appendChild(ul);
+        // materialsCon.innerHTML = "";
+        // materialsCon.appendChild(ul);
       })
-      .catch(error => console.error(error));
+      // .catch(error => console.error(error));
   }
 
 
@@ -279,9 +234,10 @@ function loadInfoBoxes() {
   });
 
   // Call the AJAX functions
+
   // getData();
   loadInfoBoxes();
-  loadMaterials();
+  loadMaterialList();
 
 })();
 
