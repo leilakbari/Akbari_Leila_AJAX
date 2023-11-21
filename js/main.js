@@ -54,28 +54,28 @@
     //This information needs to be removed then pulled with an AJAX Call using the Fetch API
     //this is the api url https://swiftpixel.com/earbud/api/materials"
 
-  const materialListData = [
-    {
-      heading: "Precision-Crafted Polymers",
-      description: "Our earbuds are meticulously molded from high-quality plastics, ensuring a blend of elegance, comfort, and resilience that's second to none."
-    },
-    {
-      heading: "Luxurious Silicone Harmony",
-      description: "Our uniquely engineered ear tips are cocooned in plush silicone, delivering an opulent embrace for your ears, ensuring an unrivaled fit and exquisite audio experience."
-    },
-    {
-      heading: "Rubberized Cables",
-      description: "Experience the unparalleled freedom of movement with our flexible rubber cables that promise durability without compromise."
-    },
-    {
-      heading: "Enhanced Comfort Sensors",
-      description: "A touch of magic in the form of built-in microphones and sensors empowers your earbuds to obey your every command, making your audio journey seamless and enchanting."
-    },
-    {
-      heading: "Artistic Mesh Guard",
-      description: "Shielded by artful mesh screens, our speakers remain untarnished, keeping your listening experience pristine."
-    }
-  ];
+  // const materialListData = [
+  //   {
+  //     heading: "Precision-Crafted Polymers",
+  //     description: "Our earbuds are meticulously molded from high-quality plastics, ensuring a blend of elegance, comfort, and resilience that's second to none."
+  //   },
+  //   {
+  //     heading: "Luxurious Silicone Harmony",
+  //     description: "Our uniquely engineered ear tips are cocooned in plush silicone, delivering an opulent embrace for your ears, ensuring an unrivaled fit and exquisite audio experience."
+  //   },
+  //   {
+  //     heading: "Rubberized Cables",
+  //     description: "Experience the unparalleled freedom of movement with our flexible rubber cables that promise durability without compromise."
+  //   },
+  //   {
+  //     heading: "Enhanced Comfort Sensors",
+  //     description: "A touch of magic in the form of built-in microphones and sensors empowers your earbuds to obey your every command, making your audio journey seamless and enchanting."
+  //   },
+  //   {
+  //     heading: "Artistic Mesh Guard",
+  //     description: "Shielded by artful mesh screens, our speakers remain untarnished, keeping your listening experience pristine."
+  //   }
+  // ];
 
 
   
@@ -128,43 +128,47 @@
   }
 
 // AJAX Function 1
-function getData() {
+function loadInfoBoxes() {
   infoboxesCon.innerHTML = spinner;
 
   fetch("https://swiftpixel.com/earbud/api/infoboxes")
     .then(response => response.json())
-    .then(infoboxes => {
-      console.log(infoboxes);
+    .then(infoBoxes => {
+      console.log(infoBoxes);
 
       let ul = document.createElement("ul");
 
       // infoboxes.results.forEach(result => {
-        infoboxes.forEach(feature => {
+        infoBoxes.forEach((infoBox, index) => {
 
-        const li = document.createElement("li");
+        // const li = document.createElement("li");
+        let selected = document.querySelector (`#hotspot-${index+1}`);
 
         // const imageElement = document.createElement("img");
         // imageElement.src = feature.picture.thumbnail;
 
-        const img = document.createElement("img");
+        const imgElement = document.createElement("img");
          // img.src = result.image.thumbnail;
-        img.src = feature.picture.thumbnail;
+        // img.src = feature.picture.thumbnail;
+        img.src = infoBox.picture.thumbnail;
 
-        const h2 = document.createElement('h2');
+        const titleElement = document.createElement('h2');
         // h2.textContent = result.title;
-        h2.textContent = feature.heading;
+        // h2.textContent = feature.heading;
+        h2.textContent = infoBox.heading;
 
-        const p = document.createElement('p');
+        const textElement = document.createElement('p');
         // p.textContent = result.text;
-        p.textContent = feature.description;
+        // p.textContent = feature.description;
+        p.textContent = infoBox.description;
 
         // li.appendChild(imageElement);
-        li.appendChild(img);
+        selected.appendChild(imgElement);
         // li.appendChild(titleElement);
-        li.appendChild(h2);
+        selected.appendChild(titleElement);
         // li.appendChild(textElement);
-        li.appendChild(p);
-        ul.appendChild(li);
+        selected.appendChild(textElement);
+        // ul.appendChild(li);
       });
 
       infoboxesCon.innerHTML = "";
@@ -275,7 +279,8 @@ function getData() {
   });
 
   // Call the AJAX functions
-  getData();
+  // getData();
+  loadInfoBoxes();
   loadMaterials();
 
 })();
