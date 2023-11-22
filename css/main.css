@@ -24,7 +24,7 @@ p {
 }
 
 #container {
-  max-width: 300px;
+  width: 300px;
   align-items: center;
   justify-content: center;
   grid-row: 8/10;
