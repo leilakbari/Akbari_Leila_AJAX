@@ -23,6 +23,13 @@ p {
   font-size: 16px;
 }
 
+#container {
+  max-width: 300px;
+  align-items: center;
+  justify-content: center;
+  grid-row: 8/10;
+}
+
 #material-section {
   background-color: #fae4c6;
   padding-bottom: 30px;
