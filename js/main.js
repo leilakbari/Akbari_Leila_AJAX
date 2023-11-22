@@ -105,7 +105,13 @@
   <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50" to="360 50 50" repeatCount="indefinite" /> </path> </svg>`;
 
   // Spinner Function
+  function showSpinner() {
+    spinner.style.display = 'block';
+  }
 
+  function hideSpinner() {
+    spinner.style.display = 'none';
+  }
 
  
 //functions
@@ -130,10 +136,7 @@ function modelLoaded() {
           let selected = document.querySelector(`#hotspot-${index + 1}`);
   
           const imgElement = document.createElement('img');
-          // imgElement.src = infoBox.picture.thumbnail;
-
           // imgElement.src = `images/${index.thumbnail}`;
-
           const imagePath = `images/${infoBox.thumbnail}`;
 
           imgElement.onload = () => {
@@ -158,6 +161,7 @@ function modelLoaded() {
           selected.appendChild(titleElement);
           selected.appendChild(textElement);
         })
+        // hideSpinner();
       })
       // .catch(error => console.error(error));
       .catch(error => console.error("Error fetching or processing data:", error));
@@ -247,6 +251,12 @@ function modelLoaded() {
   // getData();
   loadInfoBoxes();
   loadMaterialList();
+  
+
+  // Event listener for spinner
+  showSpinner();
+  hideSpinner();
+ 
 
 })();
 
