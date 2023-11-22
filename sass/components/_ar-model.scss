@@ -1,5 +1,14 @@
   // Customize our own hotspot 
 
+  #container {
+    max-width: 300px;
+    // margin: 0 auto;
+    // display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 8/10;
+  }
+
   #material-section {
     background-color: #fae4c6;
     padding-bottom: 30px;
